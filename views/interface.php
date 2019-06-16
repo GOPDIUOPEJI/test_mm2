@@ -1,4 +1,6 @@
-<?php ?>
+<?php
+	var_dump(TestMm2::get_user_bookmarks());
+ ?>
 <h1><?= $args['plugin_name'] ?></h1>
 <form id="CsvPosts" method="POST">
 	<h2>Select file for import</h2>

@@ -1,0 +1,8 @@
+.fa.add-bookmark {
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.fa.add-bookmark.added {
+	color: #ffa500;
+}
