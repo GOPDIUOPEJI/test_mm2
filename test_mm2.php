@@ -58,3 +58,15 @@ function add_to_bookmark_callback() {
 }
 
 add_action('wp_ajax_add_to_bookmark' , 'add_to_bookmark_callback');
+
+function remove_bookmark_callback() {
+
+	$post_id = $_POST['post-id'];
+	$testmm = new TestMm2();
+	$result = $testmm->remove_bookmark($post_id);
+	echo json_encode(array('status' => 1));
+	
+	wp_die(); // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
+}
+
+add_action('wp_ajax_remove_bookmark' , 'remove_bookmark_callback');

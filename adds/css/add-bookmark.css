@@ -16,6 +16,14 @@ body.wp-admin .bookmark-block {
 	margin-bottom: 20px;
 }
 
+body.wp-admin .bookmark-block.removed a{
+	opacity: 0.4;
+}
+
+body.wp-admin .bookmark-block.removed:hover a {
+	opacity: 1;
+}
+
 body.wp-admin .bookmark-block a{
 	display: flex;
 	text-decoration: none;
@@ -31,7 +39,7 @@ body.wp-admin .bookmark-block div, body.wp-admin .bookmark-block h3 {
 	flex-direction: column;
 	justify-content: center;
 	padding: 0 20px;
-	max-width: 300px;
+	width: 270px;
 }
 
 body.wp-admin .bookmark-block h3 {
