@@ -25,7 +25,7 @@ function add_scripts() {
 	wp_register_script( 'scripts.js', plugin_dir_url( __FILE__ ) . 'adds/js/scripts.js', array('jquery'), '1.1', true );
 	wp_register_script( 'awesome-icons.js', plugin_dir_url( __FILE__ ) . 'adds/js/awesome-icons.js', array('jquery'), '1.1', true );
 
-	if(is_user_logged_in() && (is_single() || is_home())){
+	if(is_user_logged_in() && (is_single() || is_home() || is_admin())){
 		wp_enqueue_script( 'scripts.js' );	
 		wp_enqueue_script( 'awesome-icons.js' );
 		wp_enqueue_style( 'add-bookmark', plugin_dir_url( __FILE__ ) . 'adds/css/add-bookmark.css' );
@@ -35,8 +35,7 @@ function add_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'add_scripts');
-
-add_filter( 'the_title', 'filter_function_name_11', 10, 2 );
+add_action( 'admin_enqueue_scripts', 'add_scripts');
 
 function filter_function_name_11( $title, $id ) {
 	if( is_user_logged_in() && (is_single() || is_home())){
@@ -46,22 +45,14 @@ function filter_function_name_11( $title, $id ) {
 	return $title;
 }
 
+add_filter( 'the_title', 'filter_function_name_11', 10, 2 );
+
 function add_to_bookmark_callback() {
 
 	$post_to_add = $_POST['post-id'];
 	$testmm = new TestMm2();
 	$result = $testmm->add_bookmark($post_to_add);
 	echo json_encode($result);
-
-	// if(isset($_FILES["file"]) && $_FILES["file"]["type"] == "text/csv"){
-	// 	$tmpName = $_FILES['file']['tmp_name'];
-	// 	$csvarr = array_map('str_getcsv', file($tmpName));
-	// 	$masspostblog = new MassPostBlog();
-	// 	$response = $masspostblog->fill_blog($csvarr);
-	// 	echo json_encode($response);
-	// } else {
-	// 	echo json_encode(array('code' => 205));
-	// }
 	
 	wp_die(); // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
 }
