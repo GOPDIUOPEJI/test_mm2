@@ -1,6 +1,6 @@
 <?php
 	$bookmarks = TestMm2::get_user_bookmarks()[0];
-
+	/*Generating of Interface*/
  ?>
 <h1><?= $args['plugin_name'] ?></h1>
 <div id="Bookmarks">
