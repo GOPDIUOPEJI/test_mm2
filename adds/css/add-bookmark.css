@@ -27,10 +27,17 @@ body.wp-admin .bookmark-block.removed:hover a {
 body.wp-admin .bookmark-block a{
 	display: flex;
 	text-decoration: none;
+	outline: none;
 }
 
 .bookmark-block a:visited {
 	color: unset;
+	outline: none;
+}
+
+.bookmark-block a:focus {
+	outline: none;
+	box-shadow: none;
 }
 
 body.wp-admin .bookmark-block div, body.wp-admin .bookmark-block h3 {
