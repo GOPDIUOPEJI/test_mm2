@@ -37,6 +37,7 @@ function add_scripts() {
 add_action( 'wp_enqueue_scripts', 'add_scripts');
 add_action( 'admin_enqueue_scripts', 'add_scripts');
 
+/* This function adds tag <i> to the end of posts title*/
 function filter_function_name_11( $title, $id ) {
 	if( is_user_logged_in() && (is_single() || is_home())){
 		$added = TestMm2::is_bookmark($id) ? 'added' : '';
@@ -47,8 +48,8 @@ function filter_function_name_11( $title, $id ) {
 
 add_filter( 'the_title', 'filter_function_name_11', 10, 2 );
 
+/*This function adds bookmark and and handling ajax request*/
 function add_to_bookmark_callback() {
-
 	$post_to_add = $_POST['post-id'];
 	$testmm = new TestMm2();
 	$result = $testmm->add_bookmark($post_to_add);
@@ -59,6 +60,7 @@ function add_to_bookmark_callback() {
 
 add_action('wp_ajax_add_to_bookmark' , 'add_to_bookmark_callback');
 
+/*This function adds bookmark and and handling ajax request*/
 function remove_bookmark_callback() {
 
 	$post_id = $_POST['post-id'];
