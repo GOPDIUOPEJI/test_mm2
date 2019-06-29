@@ -33,4 +33,4 @@
 		</div>
 	<?php endforeach; ?>
 	<p class="error"></p>
-</form>
+</div>
